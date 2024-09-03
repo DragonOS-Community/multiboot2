@@ -26,13 +26,14 @@ const RSDPV1_LENGTH: usize = 20;
 /// This tag contains a copy of RSDP as defined per ACPI 1.0 specification.
 #[derive(Copy, Clone, Debug, PartialEq, Eq, PartialOrd, Ord, Hash)]
 #[repr(C, align(8))]
+#[allow(missing_docs)]
 pub struct RsdpV1Tag {
     header: TagHeader,
-    signature: [u8; 8],
-    checksum: u8,
-    oem_id: [u8; 6],
-    revision: u8,
-    rsdt_address: u32, // This is the PHYSICAL address of the RSDT
+    pub signature: [u8; 8],
+    pub checksum: u8,
+    pub oem_id: [u8; 6],
+    pub revision: u8,
+    pub rsdt_address: u32, // This is the PHYSICAL address of the RSDT
 }
 
 impl RsdpV1Tag {
@@ -107,18 +108,19 @@ impl Tag for RsdpV1Tag {
 /// This tag contains a copy of RSDP as defined per ACPI 2.0 or later specification.
 #[derive(Copy, Clone, Debug, PartialEq, Eq, PartialOrd, Ord, Hash)]
 #[repr(C, align(8))]
+#[allow(missing_docs)]
 pub struct RsdpV2Tag {
     header: TagHeader,
-    signature: [u8; 8],
-    checksum: u8,
-    oem_id: [u8; 6],
-    revision: u8,
-    rsdt_address: u32,
-    length: u32,
-    xsdt_address: u64,
+    pub signature: [u8; 8],
+    pub checksum: u8,
+    pub oem_id: [u8; 6],
+    pub revision: u8,
+    pub rsdt_address: u32,
+    pub length: u32,
+    pub xsdt_address: u64,
     // This is the PHYSICAL address of the XSDT
-    ext_checksum: u8,
-    _reserved: [u8; 3],
+    pub ext_checksum: u8,
+    pub _reserved: [u8; 3],
 }
 
 impl RsdpV2Tag {
